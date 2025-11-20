@@ -15,11 +15,16 @@
         <button id="clickButton">Click me!</button>
         <p>Clicks: <span id="clickCountDisplay"></span></p>
         <button id="Upgrade1"> first Upgrade at 10 clicks</button>
-        <button id="SlotMachine">Gamble for the chance of a prize</button>
-        <button id="SlotMachine2">Gamble for the chance of a rare prize</button>
+        <button id="SlotMachine">Gamble for the chance of a prize for 100 clicks</button>
+        <button id="SlotMachine2">Gamble for the chance of a rare prize for 100 clicks </button>
+    
     </h2>
     <h3>
-        <audio id="ekhSfx" controls src="audio/ekh.mp3"></audio>
+        <audio id="ekhSfx" controls src="audio/ekh.mp3" hidden></audio>
+        <audio id="slotMachineWinSfx" controls src="audio/mixkit-christmas-magic-bell-hit-939.wav" hidden></audio>
+        <audio id="slotMachineLoseSfx" controls src="audio/creaking-ship-sound-effect.mp3" hidden></audio>
+        <img src="image/creakingShip.jpg" id="slotMachineLoseImg" alt="A creaking-ship-sound-effect" hidden>
+        <img src="image/win.jpg" id="slotMachineWinImg" alt="Win" hidden>
     </h3>
     <script src="index.js"></script>
 </body>

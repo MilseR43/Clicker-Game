@@ -1,20 +1,37 @@
 const clickButton=document.getElementById("clickButton");
-const clickCountDisplay=document.getElementById("clickCountDisplay");
+
 const Upgrade1=document.getElementById("Upgrade1");
+
 const SlotMachine=document.getElementById("SlotMachine");
-const ClickSfx=document.getElementById("ClickSfx");
+
 const SlotMachine2=document.getElementById("SlotMachine2");
+
+const slotMachineWinSfx=document.getElementById("slotMachineWinSfx");
+
+const slotMachineLoseSfx=document.getElementById("slotMachineLoseSfx");
+
+const slotMachineLoseImg=document.getElementById("slotMachineLoseImg");
+
+const slotMachineWinImg=document.getElementsByName("slotMachineWinImg");
+
+const clickCountDisplay=document.getElementById("clickCountDisplay");
+
 const ekhSfx=document.getElementById("ekhSfx");
 
 let clickCount = 0;
+
 let costOfUpgrade1= 10;
+
 let multiplier=1;
+
 let upgradeCost=2;
+
 let costOfSlotMachine=100;
 
 function clicksDisplaied(){
     clickCountDisplay.innerText="you have clicked the button: "+ clickCount + " times!"
-};
+}
+
 clickButton.addEventListener("click", ()=>{
     clickCount+=multiplier
     clicksDisplaied();
@@ -33,27 +50,43 @@ if (clickCount >= costOfUpgrade1){
 else{
     clickCountDisplay.innerText="not enough clicks."
 }
+
 });
 SlotMachine.addEventListener("click", ()=>{
 if(clickCount >= costOfSlotMachine){
     clickCount-= costOfSlotMachine;
     let chance = Math.random();
-    if (chance < 0.1)
-        SlotMachine.innerText="you Win common prize"
+    if (chance < 0.1){
+    SlotMachine.innerText="Great Plunder!!! you Win common prize, keep spinning for 100 clicks?";
+    slotMachineWinSfx.play();
+    slotMachineWinSfx.currentTime=0;
+    slotMachineWinImg.hidden=false;
+
+}
         else{
-        SlotMachine.innerText="you Lose"
+        SlotMachine.innerText="you Lose, try again for 100 clicks?";
+        slotMachineLoseSfx.play();
+        slotMachineLoseSfx.currentTime=0;
+        slotMachineLoseImg.hidden=false;
     }
 }
+
 });
-SlotMachine2.addEventListener("input", ()=>{
+SlotMachine2.addEventListener("click", ()=>{
 if(clickCount >= costOfSlotMachine){
     clickCount-= costOfSlotMachine;
     let chance = Math.random();
-    if (chance < 0.01)
-        SlotMachine.innerText="you Win rare prize";
-    else{
-        SlotMachine.innerText="you Lose";
-        let aud
+    if (chance < 0.01){
+        SlotMachine2.innerText="Great Plunder!!! you Win Rare prize keep spinning for 100 clicks?";
+    slotMachineWinSfx.play();
+    slotMachineWinSfx.currentTime=0;
+    slotMachineWinImg.hidden=false;
+}
+        else{
+        SlotMachine2.innerText="you Lose, try again for 100 clicks?";
+        slotMachineLoseSfx.play();
+        slotMachineLoseSfx.currentTime=0;
+        slotMachineLoseImg.hidden=false;
     }
 }
 });
